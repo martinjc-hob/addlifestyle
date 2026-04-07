@@ -1,0 +1,54 @@
+name: Build Mac App
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-mac-arm:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install pyinstaller pillow pandas requests openpyxl pyarrow tkinterdnd2
+
+      - name: Build app
+        run: |
+          pyinstaller --onefile --windowed --name "Image Review" addlifestyle.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ImageReview-Mac-AppleSilicon
+          path: dist/Image Review.app
+
+  build-mac-intel:
+    runs-on: macos-13
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install pyinstaller pillow pandas requests openpyxl pyarrow tkinterdnd2
+
+      - name: Build app
+        run: |
+          pyinstaller --onefile --windowed --name "Image Review" addlifestyle.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ImageReview-Mac-Intel
+          path: dist/Image Review.app
