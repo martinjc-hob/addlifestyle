@@ -30,7 +30,7 @@ jobs:
           path: dist/Add Lifestyle.app
 
   build-mac-intel:
-    runs-on: macos-13
+    runs-on: macos-13-xlarge
     steps:
       - uses: actions/checkout@v4
 
