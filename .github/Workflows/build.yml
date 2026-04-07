@@ -21,13 +21,13 @@ jobs:
 
       - name: Build app
         run: |
-          pyinstaller --onefile --windowed --name "Image Review" addlifestyle.py
+          pyinstaller --onefile --windowed --name "Add Lifestyle" addlifestyle.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ImageReview-Mac-AppleSilicon
-          path: dist/Image Review.app
+          name: AddLifestyle-Mac-AppleSilicon
+          path: dist/Add Lifestyle.app
 
   build-mac-intel:
     runs-on: macos-13
@@ -45,10 +45,10 @@ jobs:
 
       - name: Build app
         run: |
-          pyinstaller --onefile --windowed --name "Image Review" addlifestyle.py
+          pyinstaller --onefile --windowed --name "Add Lifestyle" addlifestyle.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ImageReview-Mac-Intel
-          path: dist/Image Review.app
+          name: AddLifestyle-Mac-Intel
+          path: dist/Add Lifestyle.app
